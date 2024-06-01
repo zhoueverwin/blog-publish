@@ -10,6 +10,7 @@ export async function POST(request) {
   const form = await request.formData();
   const formData = Object.fromEntries(form.entries());
 
+  // Log the form data to the console and confirm what is the format of the data from singup form.
   console.log('Form data:', formData);
   // Guard clause checks for email and returns early if it is not found.
   if (!formData.email) {
@@ -29,7 +30,7 @@ export async function POST(request) {
     email_address: email,
     status: 'subscribed', // 'subscribed' to add the email to your mailing list
     merge_fields: {
-      "FNAME": formData.firstName,
+      "FNAME": formData.firstName, 
       "LNAME": formData.lastName
     }
   };
