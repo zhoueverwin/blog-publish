@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
                 color: "#fff",
               }}
             >
-              <p>
+              {/* <p>
                 <strong>👋 Welcome to your new website!</strong> To customize
                 the code and content of this site,{" "}
                 <a
@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
                   see the documentation
                 </a>
                 . Remove this bar in <code>app/layout.js</code>.
-              </p>
+              </p> */}
             </div>
           )}
           {children}

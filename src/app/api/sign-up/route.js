@@ -10,6 +10,7 @@ export async function POST(request) {
   const form = await request.formData();
   const formData = Object.fromEntries(form.entries());
 
+  console.log('Form data:', formData);
   // Guard clause checks for email and returns early if it is not found.
   if (!formData.email) {
     // Sends a HTTP bad request error code.
@@ -19,13 +20,18 @@ export async function POST(request) {
     });
   }
 
-  // Get the email address from the form data
+  // Get the email address from the form datamailh
   const email = formData.email;
+  const Fullname = formData.firstName + " " + formData.lastName;
 
   // Create the data for the Mailchimp API request
   const data = {
     email_address: email,
     status: 'subscribed', // 'subscribed' to add the email to your mailing list
+    merge_fields: {
+      "FNAME": formData.firstName,
+      "LNAME": formData.lastName
+    }
   };
 
   try {

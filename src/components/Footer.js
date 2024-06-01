@@ -32,14 +32,38 @@ function SignUpForm({ settings }) {
             />
           </div>
         )}
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="relative">
+            <label>
+              <span className="sr-only">First Name</span>
+              <input
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                required={true}
+                className="w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-10 text-slate-800 placeholder-slate-400"
+              />
+            </label>
+          </div>
+          <div className="relative">
+            <label>
+              <span className="sr-only">Last Name</span>
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+                required={true}
+                className="w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-10 text-slate-800 placeholder-slate-400"
+              />
+            </label>
+          </div>
           <div className="relative">
             <label>
               <span className="sr-only">Email address</span>
               <input
                 name="email"
                 type="email"
-                placeholder="jane.doe@example.com"
+                placeholder="example@example.com"
                 required={true}
                 className="w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-10 text-slate-800 placeholder-slate-400"
               />
@@ -70,10 +94,10 @@ export function Footer({ withSignUpForm = true, settings }) {
         <HorizontalDivider />
         {withSignUpForm && <SignUpForm settings={settings} />}
         <div className="mx-auto w-full max-w-3xl text-center text-xs font-semibold tracking-tight text-slate-500">
-          Proudly published using{" "}
+          {/* Proudly published using{" "}
           <Link href="https://prismic.io" className="text-slate-700">
             Prismic
-          </Link>
+          </Link> */}
         </div>
       </div>
     </Bounded>
