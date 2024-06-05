@@ -106,7 +106,7 @@ const NewContactForm = ({ slice }) => {
           name="message"
           placeholder="Write your message here…"
         />
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <button
             type="submit"
             className="px-4 py-2 bg-gray-800 text-white rounded-md"

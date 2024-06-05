@@ -175,6 +175,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | NewContactFormSlice
   | ImageSlice
   | QuoteSlice
   | TextSlice
