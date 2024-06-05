@@ -57,6 +57,7 @@ function SignUpForm({ settings }) {
               />
             </label>
           </div>
+          </div>
           <div className="relative">
             <label>
               <span className="sr-only">Email address</span>
@@ -76,12 +77,12 @@ function SignUpForm({ settings }) {
               <span aria-hidden={true}>&rarr;</span>
             </button>
           </div>
+
           {prismic.isFilled.richText(settings.data.newsletterDisclaimer) && (
             <p className="text-center text-xs tracking-tight text-slate-500">
               <PrismicText field={settings.data.newsletterDisclaimer} />
             </p>
           )}
-        </div>
       </form>
     </div>
   );

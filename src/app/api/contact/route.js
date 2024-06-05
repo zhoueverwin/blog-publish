@@ -1,10 +1,31 @@
+
+
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.SUPABASE_URL
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+
 export async function POST(request) {
   // Get data submitted in request's form.
   const form = await request.formData();
   const formData = Object.fromEntries(form.entries());
+  console.log(supabase)
 
   // Optional logging to see the responses in the command line where the
   // Next.js app is running.
+
+  // Add a timestamp
+// Add a timestamp
+const timestamp = new Date().toISOString();
+const [date, timeWithTimezone] = timestamp.split('T');
+let [time,] = timeWithTimezone.split('Z'); //
+time = time.split('.')[0];
+
+formData.date = date;
+formData.time = time;
+
   console.log(formData);
 
   // Guard clause checks for email and returns early if it is not found.
@@ -21,8 +42,30 @@ export async function POST(request) {
   //
   // This is just an example, so we won't do anything except redirect back to
   // the homepage.
+// send the message to Supabase.
+// Here, you send the message to Supabase.
+
+  const {data, error } = await supabase
+  .from('contact_form')
+  .insert([
+    {
+      user_name: formData.name,
+      user_email: formData.email,
+      message: formData.message,
+      created_date: formData.date,
+     },
+  ])
+  console.log('Data:', data)
+  console.log('Error:', error)
+
+  if (data){
+    console.log(data)
+
+  }
+
+
   return new Response("Homepage redirect", {
-    status: 302,
-    headers: { Location: "/" },
+    status: 302,//It is commonly used to perform URL redirection.
+    headers: { Location: "/contact-me" }, // Redirect to contact-me page, if I remove contact-me it will redirect to the homepage
   });
 }
