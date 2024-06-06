@@ -11,22 +11,22 @@ export async function POST(request) {
   // Get data submitted in request's form.
   const form = await request.formData();
   const formData = Object.fromEntries(form.entries());
-  console.log(supabase)
+  // console.log(supabase)
 
   // Optional logging to see the responses in the command line where the
   // Next.js app is running.
 
   // Add a timestamp
 // Add a timestamp
-const timestamp = new Date().toISOString();
-const [date, timeWithTimezone] = timestamp.split('T');
-let [time,] = timeWithTimezone.split('Z'); //
-time = time.split('.')[0];
+// const timestampTz = new Date().toISOString();
 
-formData.date = date;
-formData.time = time;
 
-  console.log(formData);
+  // console.log(formData);
+const date = new Date();
+const options = { timeZone: 'Asia/Tokyo', timeZoneName: 'short' };
+const timestampTz = date.toLocaleString('en-US', options);
+
+  // console.log(formData);
 
   // Guard clause checks for email and returns early if it is not found.
   if (!formData.name || !formData.email || !formData.message) {
@@ -52,7 +52,9 @@ formData.time = time;
       user_name: formData.name,
       user_email: formData.email,
       message: formData.message,
-      created_date: formData.date,
+      time: timestampTz,
+      gender: formData.gender,
+      age: formData.age,
      },
   ])
   console.log('Data:', data)

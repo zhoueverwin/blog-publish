@@ -82,6 +82,7 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
   );
 };
 
+
 const NewContactForm = ({ slice }) => {
   const ageOptions = ["10s", "20s", "30s", "40s", "50s", "60s"];
 
@@ -106,6 +107,7 @@ const NewContactForm = ({ slice }) => {
           name="message"
           placeholder="Write your message here…"
         />
+        {/* <TimezoneField /> */}
         <div className="flex justify-center">
           <button
             type="submit"
