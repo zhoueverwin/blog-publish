@@ -12,6 +12,7 @@ export async function POST(request) {
 
   // Log the form data to the console and confirm what is the format of the data from singup form.
   console.log('Form data:', formData);
+
   // Guard clause checks for email and returns early if it is not found.
   if (!formData.email) {
     // Sends a HTTP bad request error code.
@@ -21,13 +22,10 @@ export async function POST(request) {
     });
   }
 
-  // Get the email address from the form datamailh
-  const email = formData.email;
-  const Fullname = formData.firstName + " " + formData.lastName;
 
   // Create the data for the Mailchimp API request
   const data = {
-    email_address: email,
+    email_address: formData.email, // The email address submitted in the form
     status: 'subscribed', // 'subscribed' to add the email to your mailing list
     merge_fields: {
       "FNAME": formData.firstName, 
@@ -45,10 +43,16 @@ export async function POST(request) {
       status: 302,
       headers: { Location: "/" },
     });
-  } catch (error) {
+  }  catch (error) {
     // Handle the error
     console.error('Mailchimp error:', error.response ? error.response.body : error.message);
-    return new Response(JSON.stringify({ error: "An error occurred", details: error.response ? error.response.body : error.message }), {
+  
+    let errorMessage = "An error occurred";
+    if (error.response && error.response.body && error.response.body.title === "Member Exists") {
+      errorMessage = "This email is already subscribed";
+    }
+  
+    return new Response(JSON.stringify({ error: errorMessage, details: error.response ? error.response.body : error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });

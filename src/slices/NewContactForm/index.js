@@ -1,4 +1,6 @@
+
 import { Bounded } from "@/components/Bounded";
+import { PrismicRichText } from "@/components/PrismicRichText";
 
 const Field = ({ label, children }) => {
   return (
@@ -56,7 +58,7 @@ const SelectField = ({ label, name, options, required = true }) => {
       <select
         name={name}
         required={required}
-        className="w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800"
+        className="w-4.5/12 rounded-none border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800"
       >
         <option value="">-- Select Age --</option>
         {options.map((option) => (
@@ -93,6 +95,7 @@ const NewContactForm = ({ slice }) => {
         method="post"
         className="grid grid-cols-1 gap-6"
       >
+        <h2 className="text-center text-xl mb-6"><PrismicRichText field={slice.primary.title} /></h2>
         <InputField label="Name" name="name" placeholder="Jane Doe" />
         <RadioField label="Gender" name="gender" options={["Male", "Female", "Others"]} />
         <SelectField label="Age" name="age" options={ageOptions} />
@@ -107,11 +110,10 @@ const NewContactForm = ({ slice }) => {
           name="message"
           placeholder="Write your message here…"
         />
-        {/* <TimezoneField /> */}
         <div className="flex justify-center">
           <button
             type="submit"
-            className="px-4 py-2 bg-gray-800 text-white rounded-md"
+            className="bg-gray-600 text-white px-4 py-2 rounded"
           >
             Send
           </button>

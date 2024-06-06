@@ -466,36 +466,6 @@ export interface NewContactFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
-
-  /**
-   * Name field in *NewContactForm → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: new_contact_form.primary.name
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  name: prismic.RichTextField;
-
-  /**
-   * Email field in *NewContactForm → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: new_contact_form.primary.email
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  email: prismic.RichTextField;
-
-  /**
-   * Message field in *NewContactForm → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: new_contact_form.primary.message
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  message: prismic.RichTextField;
 }
 
 /**
